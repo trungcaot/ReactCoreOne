@@ -1,0 +1,9 @@
+export const CREATE_COURSE = "CREATE_COURSE";
+export const LOAD_COURSES_SUCCESS = "LOAD_COURSES_SUCCESS";
+
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
