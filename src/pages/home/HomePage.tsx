@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { Dispatch } from "redux";
 import actions from "../../redux/actions";
 import AboutPage from "../about/AboutPage";
+import ContactPage from "../contact/Index";
 
 const HomePage = () => {
   const counter = useSelector((state: any) => state.counter.value);
@@ -23,7 +24,8 @@ const HomePage = () => {
       <h2>
         This is {process.env.NODE_ENV} environment with KEY = {process.env.REACT_APP_KEY}
       </h2>
-      <AboutPage text="this is about page" person={{ firstName: "A", lastName: "B" }}/>
+      <AboutPage message={"abc"}/>
+      <ContactPage/>
     </div>
   );
 };
