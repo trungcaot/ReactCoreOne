@@ -1,5 +1,5 @@
 // APP TEXT 
-export const APP_TEXT = "Welcome, Developer";
+export const APP_TITLE = "Welcome, Developer";
 export const FOOTER_TEXT = `${new Date().getFullYear()} Built with ♡ by Welcome, Developer`;
 
 // PAGE TITLES
