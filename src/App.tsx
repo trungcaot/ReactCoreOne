@@ -1,22 +1,72 @@
-import React from "react";
-import { Switch } from "react-router-dom";
+import React, { ReactElement, useReducer, FC } from "react";
+import { createMuiTheme, Theme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-import Homepage from "./pages/home/HomePage";
-import AboutPage from "./pages/about/AboutPage";
-import NotFoundPage from "./pages/NotFoundPage";
+// components
+import Layout from "./components/Layout";
 
-// import LoginLayoutRoute from "./partials/LoginLayout";
-import CommonLayoutRoute from "./partials/CommonLayout";
+// theme
+import { lightTheme, darkTheme } from "./theme/appTheme";
+
+// app routes
+import { routes } from "./constants/routeConstant";
+
+// constants
+import { APP_TITLE } from "./constants";
+
+// interfaces
+import RouteItem from "./models/RouteItem";
+
+// define app context
+const AppContext = React.createContext(null);
+
+// default component
+const DefaultComponent: FC<{}> = (): ReactElement => <div>{`No Component Defined.`}</div>;
 
 function App() {
+  const [useDefaultTheme, toggle] = useReducer((theme) => !theme, true);
+
+  // define custom theme
+  let theme: Theme = createMuiTheme(useDefaultTheme ? lightTheme : darkTheme);
+  theme = responsiveFontSizes(theme);
+
   return (
-    <div className="App">
-      <Switch>
-        <CommonLayoutRoute path="/about" component={AboutPage} />
-        <CommonLayoutRoute exact path="/" component={Homepage} />
-        <CommonLayoutRoute component={NotFoundPage} />
-      </Switch>
-    </div>
+    <>
+      <Helmet>
+        <title>{APP_TITLE}</title>
+      </Helmet>
+      <AppContext.Provider value={null}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Switch>
+              <Layout toggleTheme={toggle} useDefaultTheme={useDefaultTheme}>
+                {/* for each route config, a react route is created */}
+                {routes.map((route: RouteItem) =>
+                  route.subRoutes ? (
+                    route.subRoutes.map((item: RouteItem) => (
+                      <Route
+                        key={`${item.key}`}
+                        path={`${item.path}`}
+                        component={item.component || DefaultComponent}
+                        exact
+                      />
+                    ))
+                  ) : (
+                    <Route
+                      key={`${route.key}`}
+                      path={`${route.path}`}
+                      component={route.component || DefaultComponent}
+                      exact
+                    />
+                  )
+                )}
+              </Layout>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </AppContext.Provider>
+    </>
   );
 }
 
