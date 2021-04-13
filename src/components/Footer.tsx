@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Link } from "@material-ui/core";
 
-import { FOOTER_TEXT, FOOTER_HEIGHT } from "../contants/appContant";
+import { FOOTER_TEXT, FOOTER_HEIGHT } from "../constants/appConstant";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

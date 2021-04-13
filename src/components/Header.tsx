@@ -8,7 +8,7 @@ import Brightness3Icon from "@material-ui/icons/Brightness3";
 import UserIcon from "@material-ui/icons/AccountCircle";
 
 // constants
-import { APP_TITLE, DRAWER_WIDTH } from "../contants/appContant";
+import { APP_TITLE, DRAWER_WIDTH } from "../constants/appConstant";
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
