@@ -24,7 +24,7 @@ const Footer: FC<{}> = (): ReactElement => {
 
   return (
     <div className={classes.root}>
-      <Link href={`${process.env.REACT_APP_API_URL}`} target="_blank" rel="noreferrer" className={classes.footer}>
+      <Link href="/" target="_blank" rel="noreferrer" className={classes.footer}>
         {FOOTER_TEXT}
       </Link>
     </div>
