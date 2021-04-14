@@ -55,7 +55,7 @@ const Menu: FC<{}> = (): ReactElement => {
   return (
     <List>
       {routes.map((route: RouteItem) => (
-        <>
+        <React.Fragment key={route.keyRoute}>
           {route.subRoutes ? (
             <>
               <ListItem button onClick={handleClick}>
@@ -83,9 +83,10 @@ const Menu: FC<{}> = (): ReactElement => {
               </ListItem>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <List className={classes.nested}>
-                  {route.subRoutes.map((sRoute: RouteItem) => (
+                  {route.subRoutes.map((sRoute: RouteItem, index: number) => (
                     <MenuItem
-                      key={`${sRoute.key}`}
+                      key={index}
+                      keyRoute={sRoute.keyRoute}
                       title={sRoute.title}
                       icon={sRoute.icon}
                       tooltip={sRoute.tooltip}
@@ -99,19 +100,21 @@ const Menu: FC<{}> = (): ReactElement => {
               </Collapse>
             </>
           ) : (
-            <MenuItem
-              key={`${route.key}`}
-              title={route.title}
-              icon={route.icon}
-              tooltip={route.tooltip}
-              path={route.path}
-              enabled={route.enabled}
-              component={route.component}
-              subRoutes={route.subRoutes}
-            />
+            <div key={route.keyRoute}>
+              <MenuItem
+                keyRoute={route.keyRoute}
+                title={route.title}
+                icon={route.icon}
+                tooltip={route.tooltip}
+                path={route.path}
+                enabled={route.enabled}
+                component={route.component}
+                subRoutes={route.subRoutes}
+              />
+            </div>
           )}
           {route.appendDivider && <Divider className={classes.divider} />}
-        </>
+        </React.Fragment>
       ))}
     </List>
   );

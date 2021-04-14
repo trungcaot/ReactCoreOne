@@ -46,7 +46,7 @@ function App() {
                   route.subRoutes ? (
                     route.subRoutes.map((item: RouteItem) => (
                       <Route
-                        key={`${item.key}`}
+                        key={`${item.keyRoute}`}
                         path={`${item.path}`}
                         component={item.component || DefaultComponent}
                         exact
@@ -54,7 +54,7 @@ function App() {
                     ))
                   ) : (
                     <Route
-                      key={`${route.key}`}
+                      key={`${route.keyRoute}`}
                       path={`${route.path}`}
                       component={route.component || DefaultComponent}
                       exact

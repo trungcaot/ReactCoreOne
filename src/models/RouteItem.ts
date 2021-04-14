@@ -1,7 +1,7 @@
 import { ComponentType, FC } from "react";
 
 interface RouteItem {
-  key: string;
+  keyRoute: string;
   title: string;
   tooltip?: string;
   path?: string;
@@ -13,4 +13,3 @@ interface RouteItem {
 }
 
 export default RouteItem;
-
