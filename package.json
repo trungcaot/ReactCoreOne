@@ -84,7 +84,8 @@
   },
   "babel": {
     "presets": [
-      "babel-preset-react-app"
-    ]
+      "babel-preset-react-app",
+      "@babel/preset-typescript"
+    ]    
   }
 }
