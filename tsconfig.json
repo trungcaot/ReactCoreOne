@@ -3,22 +3,32 @@
       "baseUrl": ".",
       // "outDir": "./build/", not needed because we use webpack with ts-loader
       "module": "esnext",
+      // Target ES5 for more modern browsers and old browser.
       "target": "es5",
+      // Include typings from built-in lib declarations
       "lib": ["es6", "dom"],
+      // Include module source maps for debugging
       "sourceMap": true,
+      // Allow JavaScript files to be compiled.
       "allowJs": true,
+      // Set React as the JSX factory
       "jsx": "react",
+      // Resolve modules using Node-resolution algorithm
       "moduleResolution": "node",
+      // Specify the root directory of input files. Use to control the output directory
       "rootDir": "src",
       "forceConsistentCasingInFileNames": true,
       "allowSyntheticDefaultImports": true,
       "noImplicitReturns": true,
+      // Raise error on 'this' expressions with an implied 'any' type. 
       "noImplicitThis": true,
-      "noImplicitAny": true, // todo
+      // Raise error on expressions and declarations with an implied 'any' type.
+      "noImplicitAny": true,
       "strictNullChecks": true,
       "suppressImplicitAnyIndexErrors": true,
       "noUnusedLocals": true,
       "skipLibCheck": true,
+      "esModuleInterop": true
     },
     "include": [
         "./src/*"
